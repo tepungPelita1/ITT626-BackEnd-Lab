@@ -68,6 +68,10 @@ class ExportStaticSite extends Command
             }
 
             $html = $this->rewrite((string) $response->getContent(), $base);
+
+            if ($path === '/home') {
+                $html = $this->addStickyNote($html);
+            }
             $assets = [...$assets, ...$this->localAssets($html, $base)];
 
             $file = $out.rtrim($path, '/').'/index.html';
@@ -197,6 +201,40 @@ class ExportStaticSite extends Command
 </script>
 
 HTML;
+    }
+
+    /**
+     * Pin a reminder note for classmates in the empty space beside the dashboard greeting.
+     */
+    private function addStickyNote(string $html): string
+    {
+        $note = <<<'HTML'
+<style>
+  .hero { position: relative; }
+  .demo-sticky {
+    position: absolute; top: 4px; right: 200px; width: 340px;
+    padding: 16px 20px 18px; background: #fff59d; color: #3b3200;
+    border-radius: 4px 4px 18px 4px; transform: rotate(2deg);
+    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.08);
+    font: 500 14px/1.5 'Segoe Print', 'Comic Sans MS', 'Bradley Hand', cursive;
+  }
+  .demo-sticky::before {
+    content: ''; position: absolute; top: -10px; left: 50%; width: 90px; height: 22px;
+    transform: translateX(-50%) rotate(-3deg); background: rgba(255,255,255,.55);
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  }
+  .demo-sticky strong { display: block; margin-bottom: 6px; font-size: 17px; }
+  @media (max-width: 1300px) {
+    .demo-sticky { position: static; width: auto; max-width: 420px; transform: rotate(-1deg); margin: 8px 0; }
+  }
+</style>
+<div class="demo-sticky" role="note">
+  <strong>📌 Heads up!</strong>
+  Make sure the lab Sir asked us to do actually works &mdash; every CRUD (create, read, update, delete) must succeed, because there will be a CRUD DEMO test, one by one.
+</div>
+HTML;
+
+        return (string) preg_replace('/<div class="hero">/', '<div class="hero">'.$note, $html, 1);
     }
 
     /**

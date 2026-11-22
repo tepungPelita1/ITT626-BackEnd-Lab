@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('timetables', function (Blueprint $table) {
-        $table->foreign('subject_id') ->references('id')-> on ('subjects');
-        $table->foreign('day_id') ->references('id')-> on ('days');
-        $table->foreign('hall_id') ->references('id')-> on ('halls');
-        $table->foreign('user_id') ->references('id')-> on ('users');
-        $table->foreign('group_id') ->references('id')-> on ('groups');
+            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->foreign('day_id')->references('id')->on('days');
+            $table->foreign('hall_id')->references('id')->on('halls');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 

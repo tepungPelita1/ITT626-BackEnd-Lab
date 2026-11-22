@@ -9,19 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   
-public function up(): void
-{
-    Schema::table('users', function (Blueprint $table) {
-        $table->string('address')->nullable();
-    });
-}
+    public function up(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('address')->nullable();
+        });
+    }
 
-public function down(): void
-{
-    Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn('address');
-    });
-}
-
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('address');
+        });
+    }
 };

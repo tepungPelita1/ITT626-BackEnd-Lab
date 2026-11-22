@@ -38,7 +38,7 @@ class StudentController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
-            'ic_number' => $request->ic_number, 
+            'ic_number' => $request->ic_number,
             'age' => $request->age,
             'password' => $request->password,
             'address' => $request->address,

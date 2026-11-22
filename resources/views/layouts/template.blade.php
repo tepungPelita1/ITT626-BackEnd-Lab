@@ -73,7 +73,6 @@
         <div class="avatar">{{ auth()->user()->initials() }}</div>
         <div class="who">
           <strong>{{ auth()->user()->name }}</strong>
-          <span>Administrator</span>
         </div>
       </div>
 

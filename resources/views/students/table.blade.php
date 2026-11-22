@@ -25,6 +25,8 @@
                     <tr>
                         <th class="pl-4">No</th>
                         <th>Name</th>
+                        <th>Age</th>
+                        <th>IC Number</th>
                         <th>Email</th>
                         <th>Joined</th>
                         <th class="text-right pr-4">Actions</th>
@@ -40,6 +42,14 @@
 
                             <td class="student-name">
                                 {{ $s->name }}
+                            </td>
+
+                            <td class="text-muted">
+                                {{ $s->age ?? '—' }}
+                            </td>
+
+                            <td class="text-muted">
+                                {{ $s->ic_number ?? '—' }}
                             </td>
 
                             <td class="student-email">
@@ -84,7 +94,7 @@
 
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center py-5">
+                            <td colspan="7" class="text-center py-5">
                                 <p class="text-muted mb-2">
                                     No student records yet.
                                 </p>

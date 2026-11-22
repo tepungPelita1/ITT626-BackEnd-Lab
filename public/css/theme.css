@@ -33,6 +33,20 @@
   /* Chip — translucent inner fill on a tile */
   --chip: rgba(255, 255, 255, .72);
 
+  /* Pastel palette — shared by tiles, nav icon chips and action pills */
+  --pastel-lav: #cfc7f0;
+  --pastel-lav-ink: #2e2468;
+  --pastel-pink: #f4a6c0;
+  --pastel-pink-ink: #5a1c38;
+  --pastel-green: #c9dca0;
+  --pastel-green-ink: #2f4012;
+  --pastel-yellow: #fbe48a;
+  --pastel-yellow-ink: #4d3b05;
+  --pastel-orange: #f5aa7c;
+  --pastel-orange-ink: #5a2a0a;
+  --pastel-blue: #bcd2e4;
+  --pastel-blue-ink: #1b3550;
+
   /* Radius scale */
   --r-xl: 28px;
   --r-lg: 20px;
@@ -46,12 +60,12 @@
 }
 
 /* Tile palette — each tile sets --tb (bg) and --ti (text) */
-.tile-lav    { --tb: #cfc7f0; --ti: #2e2468; }
-.tile-pink   { --tb: #f4a6c0; --ti: #5a1c38; }
-.tile-green  { --tb: #c9dca0; --ti: #2f4012; }
-.tile-yellow { --tb: #fbe48a; --ti: #4d3b05; }
-.tile-orange { --tb: #f5aa7c; --ti: #5a2a0a; }
-.tile-blue   { --tb: #bcd2e4; --ti: #1b3550; }
+.tile-lav    { --tb: var(--pastel-lav); --ti: var(--pastel-lav-ink); }
+.tile-pink   { --tb: var(--pastel-pink); --ti: var(--pastel-pink-ink); }
+.tile-green  { --tb: var(--pastel-green); --ti: var(--pastel-green-ink); }
+.tile-yellow { --tb: var(--pastel-yellow); --ti: var(--pastel-yellow-ink); }
+.tile-orange { --tb: var(--pastel-orange); --ti: var(--pastel-orange-ink); }
+.tile-blue   { --tb: var(--pastel-blue); --ti: var(--pastel-blue-ink); }
 
 /* Dark mode */
 .dark {
@@ -80,16 +94,23 @@
 
   --chip: rgba(15, 23, 42, .45);
 
+  /* Pastel palette — deep tiles with light ink for dark mode */
+  --pastel-lav: #3a3274;
+  --pastel-lav-ink: #e4defc;
+  --pastel-pink: #6e2f4b;
+  --pastel-pink-ink: #fcd9e6;
+  --pastel-green: #3d4b24;
+  --pastel-green-ink: #e3f0c4;
+  --pastel-yellow: #5d4a14;
+  --pastel-yellow-ink: #fdf0b8;
+  --pastel-orange: #6e3b1d;
+  --pastel-orange-ink: #fde0cb;
+  --pastel-blue: #25384d;
+  --pastel-blue-ink: #d3e6f5;
+
   --shadow: 0 12px 32px -16px rgba(0, 0, 0, .55);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
 }
-
-.dark .tile-lav    { --tb: #3a3274; --ti: #e4defc; }
-.dark .tile-pink   { --tb: #6e2f4b; --ti: #fcd9e6; }
-.dark .tile-green  { --tb: #3d4b24; --ti: #e3f0c4; }
-.dark .tile-yellow { --tb: #5d4a14; --ti: #fdf0b8; }
-.dark .tile-orange { --tb: #6e3b1d; --ti: #fde0cb; }
-.dark .tile-blue   { --tb: #25384d; --ti: #d3e6f5; }
 
 .dark .text-muted { color: var(--muted) !important; }
 .dark .text-dark { color: var(--ink) !important; }
@@ -242,7 +263,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 9px 12px;
   border-radius: var(--r-pill);
   color: var(--muted);
   font-weight: 500;
@@ -262,31 +283,27 @@ body {
 }
 
 .nav .icon {
-  width: 20px;
-  text-align: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  background: var(--tb, transparent);
+  color: var(--ti, var(--muted));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  font-size: 15px;
+  font-size: 12px;
+  line-height: 1;
+  transition: background-color .16s ease, color .16s ease;
 }
 
-.nav a.active .icon {
-  color: var(--surface);
-}
-
-.icon-ink    { color: var(--muted); }
-.icon-pink   { color: #5a1c38; }
-.icon-orange { color: #5a2a0a; }
-.icon-green  { color: #2f4012; }
-.icon-yellow { color: #4d3b05; }
-.icon-blue   { color: #1b3550; }
-.icon-lav    { color: #2e2468; }
-
-.dark .icon-ink    { color: var(--faint); }
-.dark .icon-pink   { color: #fcd9e6; }
-.dark .icon-orange { color: #fde0cb; }
-.dark .icon-green  { color: #e3f0c4; }
-.dark .icon-yellow { color: #fdf0b8; }
-.dark .icon-blue   { color: #d3e6f5; }
-.dark .icon-lav    { color: #e4defc; }
+.icon-ink    { --tb: var(--line); --ti: var(--muted); }
+.icon-pink   { --tb: var(--pastel-pink); --ti: var(--pastel-pink-ink); }
+.icon-orange { --tb: var(--pastel-orange); --ti: var(--pastel-orange-ink); }
+.icon-green  { --tb: var(--pastel-green); --ti: var(--pastel-green-ink); }
+.icon-yellow { --tb: var(--pastel-yellow); --ti: var(--pastel-yellow-ink); }
+.icon-blue   { --tb: var(--pastel-blue); --ti: var(--pastel-blue-ink); }
+.icon-lav    { --tb: var(--pastel-lav); --ti: var(--pastel-lav-ink); }
 
 .side-foot {
   margin-top: auto;
@@ -411,6 +428,29 @@ body {
 .btn-sm {
   padding: 6px 14px;
   font-size: 13px;
+}
+
+/* Pastel action pills — table actions reuse the tile palette */
+.tbl .btn-info,
+.tbl .btn-primary,
+.tbl .btn-danger {
+  border: 1px solid color-mix(in srgb, var(--ti) 18%, transparent);
+  color: var(--ti);
+}
+
+.tbl .btn-info    { --tb: var(--pastel-blue); --ti: var(--pastel-blue-ink); background: var(--tb); }
+.tbl .btn-primary { --tb: var(--pastel-lav);  --ti: var(--pastel-lav-ink);  background: var(--tb); }
+.tbl .btn-danger  { --tb: var(--pastel-pink); --ti: var(--pastel-pink-ink); background: var(--tb); }
+
+.tbl .btn-info:hover,
+.tbl .btn-info:focus,
+.tbl .btn-primary:hover,
+.tbl .btn-primary:focus,
+.tbl .btn-danger:hover,
+.tbl .btn-danger:focus {
+  background: color-mix(in srgb, var(--tb) 84%, var(--ti));
+  border-color: color-mix(in srgb, var(--ti) 30%, transparent);
+  color: var(--ti);
 }
 
 /* ---------- Hero ---------- */
@@ -826,29 +866,49 @@ a.tile {
 .student-list .student-actions {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 6px;
   white-space: nowrap;
 }
-.student-list .action-link {
-  background: none;
-  border: none;
-  padding: 0;
-  color: var(--muted);
-  font-size: 12px;
+.student-list .action-link,
+.student-list .action-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--ti) 18%, transparent);
+  border-radius: var(--r-pill);
+  padding: 6px 14px;
+  background: var(--tb);
+  color: var(--ti);
+  font-size: 13px;
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  transition: color .16s ease;
+  transition: background-color .16s ease, color .16s ease, border-color .16s ease;
 }
-.student-list .action-link:hover {
-  color: var(--brand);
-  text-decoration: underline;
+/* View — first link */
+.student-list .student-actions a:nth-of-type(1) {
+  --tb: var(--pastel-blue);
+  --ti: var(--pastel-blue-ink);
 }
+/* Edit — second link */
+.student-list .student-actions a:nth-of-type(2) {
+  --tb: var(--pastel-lav);
+  --ti: var(--pastel-lav-ink);
+}
+/* Delete */
 .student-list .action-delete {
-  color: var(--faint);
+  --tb: var(--pastel-pink);
+  --ti: var(--pastel-pink-ink);
 }
-.student-list .action-delete:hover {
-  color: var(--danger);
+.student-list .action-link:hover,
+.student-list .action-link:focus,
+.student-list .action-delete:hover,
+.student-list .action-delete:focus {
+  background: color-mix(in srgb, var(--tb) 84%, var(--ti));
+  border-color: color-mix(in srgb, var(--ti) 30%, transparent);
+  color: var(--ti);
+  text-decoration: none;
 }
 .student-list .student-pagination {
   padding: 12px 16px;

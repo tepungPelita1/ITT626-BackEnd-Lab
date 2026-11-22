@@ -27,6 +27,8 @@ class StudentController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'phone_number' => ['nullable', 'string', 'max:255'],
+            'ic_number' => ['nullable', 'string', 'max:12'],
             'age' => ['nullable', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'address' => ['required', 'string', 'max:255'],
@@ -35,6 +37,8 @@ class StudentController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'ic_number' => $request->ic_number, 
             'age' => $request->age,
             'password' => $request->password,
             'address' => $request->address,
@@ -60,6 +64,8 @@ class StudentController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$student->id],
             'age' => ['nullable', 'string', 'max:255'],
+            'phone_number' => ['nullable', 'string', 'max:255'],
+            'ic_number' => ['nullable', 'string', 'max:12'],
             'password' => ['nullable', 'string', 'min:8'],
             'address' => ['nullable', 'string', 'max:255'],
         ]);
@@ -67,6 +73,8 @@ class StudentController extends Controller
         $student->update([
             'name' => $request->name,
             'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'ic_number' => $request->ic_number,
             'age' => $request->age,
             'address' => $request->address,
         ]);

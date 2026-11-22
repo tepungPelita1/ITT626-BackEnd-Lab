@@ -66,7 +66,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
+                        
                         <div class="form-group mb-4">
                             <label for="age">
                                 Age <span class="text-muted font-weight-normal">(Optional)</span>
@@ -81,6 +81,40 @@
                                 min="1"
                             >
                             @error('age')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="phone_number">
+                                Phone Number <span class="text-muted font-weight-normal">(Optional)</span>
+                            </label>
+                            <input
+                                id="phone_number"
+                                type="text"
+                                name="phone_number"
+                                class="form-control @error('phone_number') is-invalid @enderror"
+                                placeholder="Enter phone number"
+                                value="{{ old('phone_number') }}"
+                            >
+                            @error('phone_number')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="ic_number">
+                                IC Number <span class="text-muted font-weight-normal">(Optional)</span>
+                            </label>
+                            <input
+                                id="ic_number"
+                                type="text"
+                                name="ic_number"
+                                class="form-control @error('ic_number') is-invalid @enderror"
+                                placeholder="Enter IC number"
+                                value="{{ old('ic_number') }}"
+                            >
+                            @error('ic_number')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

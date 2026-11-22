@@ -32,6 +32,17 @@
                     <small class="text-muted d-block mb-1">Email Address</small>
                     <span>{{ $student->email }}</span>
                 </div>
+
+                <div class="col-md-6 mb-4">
+                    <small class="text-muted d-block mb-1">Phone Number</small>
+                    <span>{{ $student->phone_number ?? 'Not provided' }}</span>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <small class="text-muted d-block mb-1">IC Number</small>
+                    <span>{{ $student->ic_number ?? 'Not provided' }}</span>
+                </div>  
+
                 <div class="col-md-6 mb-4">
                     <small class="text-muted d-block mb-1">Age</small>
                     <span>{{ $student->age ?? 'Not provided' }}</span>

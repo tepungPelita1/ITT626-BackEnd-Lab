@@ -80,6 +80,42 @@
                             @enderror
                         </div>
 
+                        {{-- Phone Number --}}
+                        <div class="form-group mb-4">
+                            <label for="phone_number">
+                                Phone Number <span class="text-muted font-weight-normal">(Optional)</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="phone_number"
+                                name="phone_number"
+                                class="form-control @error('phone_number') is-invalid @enderror"
+                                placeholder="Enter phone number"
+                                value="{{ old('phone_number', $student->phone_number) }}"
+                            >
+                            @error('phone_number')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>  
+
+                        {{-- IC Number --}}
+                        <div class="form-group mb-4">
+                            <label for="ic_number">
+                                IC Number <span class="text-muted font-weight-normal">(Optional)</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="ic_number"
+                                name="ic_number"
+                                class="form-control @error('ic_number') is-invalid @enderror"
+                                placeholder="Enter IC number"
+                                value="{{ old('ic_number', $student->ic_number) }}"
+                            >
+                            @error('ic_number')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         {{-- Age --}}
                         <div class="form-group mb-4">
                             <label for="age">Age <span class="text-muted font-weight-normal">(Optional)</span></label>
